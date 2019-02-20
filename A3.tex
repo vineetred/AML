@@ -34,7 +34,10 @@ of the 3 cases? (b) Is B conditionally independent of D given A and C}
 \end{enumerate} 
 \begin{proof} 
 I will be using d-separation to figure this out.\\ \\
-\textbf{(a) (i)} From the figure, we are told that $B$ and $D$ are observed. There are two paths from $A$ to $C$, which are $ABC$ and $ADC$
+\textbf{(a) (i)} From the figure, we are told that $B$ and $D$ are observed. There are two paths from $A$ to $C$, which are $ABC$ and $ADC$. Let's look at the path $ABC$ - here, the figure is in a head-tail configuration, with $B$ being observed. This means that, $B$ will block the path from $A$ to $C$. The same thing happens in the other path too. Since both paths are blocked, we can conclude that $A$ is conditionally independent of $C$ given $B, D$.\\ \\
+\textbf{(ii)} From the figure, $B$ and $C$ are observed. There are two paths from $A$ to $C$, which are $ABC$ and $ADC$. Let's look at the path $ABC$ - here, the figure is in a head-head configuration, where $B$ is being observed. $B$ will block the path from $A$ to $C$. In an H-H configuration, a path becomes unblocked if the node is observed. This means that $B$ will not block the path. Hence, A is dependent on C given B and D.\\ \\
+\textbf{(b)(i)} From the figure, we are told that $A$ and $C$ are observed. There are two paths from $B$ to $D$, which are $DCB$ and $DAB$. Let's look at the path $DCB$ - here, the figure is in a head-head configuration. Since C is being observed, the path becomes unblocked. Hence, we can safely say that B is not independent of D given A and C. \\ \\
+\textbf{(b)(ii)} From the figure, we are told that $A$ and $C$ are observed. There are two paths from $B$ to $D$, which are $DCB$ and $DAB$. Let's look at the path $DAB$ - it is in a tail-tail configuration with A being observed. This means that A will block the path from D to B. Now coming to path DCB - it it is also in a tail-tail configuration with C being observed. This means that C will block the path from D to B. Hence, since both paths are blocked, we get that D is independent of B given A and C.
 \end{proof}
 
 \begin{enumerate}
