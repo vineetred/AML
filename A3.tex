@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{upgreek}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+\date{20 February 2019}
+\marginparwidth 0.5in 
+\oddsidemargin 0.25in 
+\evensidemargin 0.25in 
+\marginparsep 0.25in
+\topmargin 0.25in 
+\textwidth 6in \textheight 8 in
+\newtheorem{question}{Question: }
+\theoremstyle{case}
+\newtheorem{case}{Case}
+\graphicspath{ {images/} }
+\begin{document}
+\author{Sai Vineet Reddy Thatiparthi}
+
+ \title{%
+  Advanced Machine Learning \\
+  \large Homework 3}
+\maketitle
+\begin{enumerate}
+    \item [1.] \textbf{For the following gure, (a) Is A independent of B given B and D in each
+of the 3 cases? (b) Is B conditionally independent of D given A and C}
+\end{enumerate} 
+\begin{proof} 
+Answer
+\end{proof}
+
+\begin{enumerate}
+    \item [2.] \textbf{Consider the problem discussed in class (Notes set 5-bn.pdf; the example
+with heat disease etc.). Infer the probability that an individual has heart
+disease given that the indivual has high blood pressure, has ahealth dietg
+and exercise regularly}
+\end{enumerate}
+\begin{proof}
+The MSE of the different polynomials will be displayed at the bottom of the plotted functions on the graph itself. These graphs are also the same graphs as sub-question D.
+
+\end{proof}
+\begin{enumerate}
+    \item [3.] \textbf{Induce the Bayesian network topology for the following problem: Two
+algorithms, A1 and A2 continually observe intrusions into a computer
+network. Suppose, A1 indicates an intrusion while A2 does not. Sometimes
+an intrusion is detected because the system administrator upgraded a
+previous version of an application. Is there an intrusion? Make as many
+reasonable assumptions as required.}
+\end{enumerate} 
+\begin{proof} 
+The features that we will assume are present and affecting our computer network are - 
+\begin{itemize}
+  \item OS Version
+  \item Software Version
+  \item Internet Access
+  \item USB Access
+  \item Intrusion
+\end{itemize}
+The probability joint distribution will be as follows -
+\begin{table}[]
+\begin{tabular}{ll}
+\textbf{IA} & \textbf{USB} \\
+0.8 & 0.9
+\end{tabular}
+\end{table}
+\end{proof}
+
+\end{document}
