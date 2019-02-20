@@ -43,12 +43,47 @@ I will be using d-separation to figure this out.\\ \\
 \begin{enumerate}
     \item [2.] \textbf{Consider the problem discussed in class (Notes set 5-bn.pdf; the example
 with heat disease etc.). Infer the probability that an individual has heart
-disease given that the indivual has high blood pressure, has ahealth dietg
+disease given that the individual has high blood pressure, has health diet
 and exercise regularly}
 \end{enumerate}
 \begin{proof}
-The MSE of the different polynomials will be displayed at the bottom of the plotted functions on the graph itself. These graphs are also the same graphs as sub-question D.
-
+We need to find $P(HD = Y|BP=Y,D = H, E = Y)$. To do this, we can do the following - 
+\begin{gather*}
+    = \frac{P(HD, BP, D, E, CP, HB}{P(BP, D, E)}
+\end{gather*}
+We do this because we need to marginalise on all the unknown features too.
+\begin{gather*}
+    = \frac{\sum_{HB}\sum_{CP}P(E)P(D)P(HD|E,D)P(HB|E,D)P(BP|HD),P(CP|HB,|HD)}{\sum_{HB}\sum_{CP}\sum_{HD}P(E)P(D)P(HD|E,D)P(HB|E,D)P(BP|HD),P(CP|HB,|HD)}
+\end{gather*}
+This is the marginalisation step. \\ \\
+This is the numerator
+\begin{gather*}
+    \alpha \sum_{HB}P(HB|D)\sum_{CP}P(CP|HB,HD)\\
+    \end{gather*}
+    This is the denominator
+    \begin{gather*}
+    \beta \sum_{HB}P(HB|D)\sum_{HD}P(BP|HD)P(HD|E,D)\sum_{CP}P(CP|HB,HD) \\
+    \end{gather*}
+here, $\beta = P(E)P(D)$ and $\alpha = P(E)P(D) P(HD|E,D) P(BP|HD)$ \\ \\
+To simplify the summations (we look at the data), in the numerator we get = 
+\begin{gather*}
+= \sum_{HB}P(HB|D)\sum_{CP}P(CP|HD,HB) * \alpha\\
+= 0.2 * (0.8+0.2) + 0.8(0.6+0.4) *\alpha \\ 
+= 1 * \alpha \\
+= 1* 0.7*0.25*0.25*0.85\\
+Numerator = 0.2125
+\end{gather*}
+The denomintor simplifies to = 
+\begin{gather*}
+    = \beta * \sum_{HB}P(HB|D)\sum_{HD}P(BP|HD)P(HD|E,D)\sum_{CP}P(CP|HB,HD)\\
+    = 0.85 * 0.25 (0.2(0.8+0.2)) + 0.85 * 0.25(0.8 (0.8*0.4)) + 0.2*0.75(0.2) + 0.2*0.75*0.8 \\
+    Denominator = 0.3625
+\end{gather*}
+Now, dividing the numerator and denominator we get, 
+\begin{gather*}
+    \frac{0.2125}{0.3625} = 0.5862
+\end{gather*}
+So, $P(HD = Y|BP=Y,D = H, E = Y) = 0.5862$
 \end{proof}
 \begin{enumerate}
     \item [3.] \textbf{Induce the Bayesian network topology for the following problem: Two
@@ -61,19 +96,27 @@ reasonable assumptions as required.}
 \begin{proof} 
 The features that we will assume are present and affecting our computer network are - 
 \begin{itemize}
-  \item OS Version
-  \item Software Version
-  \item Internet Access
-  \item USB Access
-  \item Intrusion
+  \item OS Version = OS (Computers having old or new OS's)
+  \item Auto Update = AU (Probability of an auto update)
+  \item Intrusion = I (Probability of an intrusion)
+  \item Algorithm A1 =  $A_1$
+  \item Algorithm A2 = $A_2$
 \end{itemize}
-The probability joint distribution will be as follows -
-\begin{table}[]
-\begin{tabular}{ll}
-\textbf{IA} & \textbf{USB} \\
-0.8 & 0.9
-\end{tabular}
-\end{table}
+The probability joint distribution and the topology will be as follows (look at figure 1) \\ \\
+\begin{figure}[h]
+            \caption{Bayesian Network Topology}
+            \includegraphics[scale=0.2]{img3.jpg}
+            % \centering
+            \end{figure}
+$A_1$ and $A_2$ will be monitoring for intrusions. \\
+We need to calculate  $P(Intrusion = Y)$ = \\
+\begin{gather*}
+    = P(I = Y|OS, AU = Y) \\
+    = \frac{P(I = Y,OS,AU = Y)}{P(OS,AU)}\\
+    = \frac{\sum_{OS}\sum_{A1}\sum_{A2}P(I=Y|OS,AU= Y).P(OS).P(AU=Y).P(A1|I=Y).P(A2|I=Y)}{\sum_{OS}\sum_{AU}\sum_{A1}\sum_{A2}\sum_{I}P(I|OS,AU).P(OS).P(AU).P(A1|I).P(A2|I)} \\
+\end{gather*}
+We take auto update = Yes because the system just finished an automatic software update. We just need to compute the probability of when an intrusion has actually occurred, hence we equate it to Y as well. This is the reason why the numerator has this conditions present and also the reason why we do not marginalise on I and AU. However, since the denominator is different, we marginalise there on all features that can vary.  \\ \\
+P (Intrusion) was too cumbersome to calculate so I just left the formula the way it is above, you just have to substitute the values. We can just plug the values in from the figure 1 to compute it. After calculating this Probability, we will have the value of P(Intrusion = YES). If the probability is higher than 0.5, then we say that an intrusion actually might have occurred. If it is lower than 0.5, we say that an intrusion has not occurred. 
 \end{proof}
 
 \end{document}
